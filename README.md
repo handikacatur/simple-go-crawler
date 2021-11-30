@@ -11,3 +11,5 @@ Change `chromedp.WaitVisible('your-element')` to match your requirement. It will
 2. GoFiber [see here](https://github.com/gofiber/fiber)
 
 ### Unit testing screenshot
+![CSR](/screenshots/CSR.png)<br>
+![SSR](/screenshots/SSR.png)
