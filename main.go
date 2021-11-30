@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/chromedp/cdproto/cdp"
 	"github.com/chromedp/chromedp"
+	"github.com/gofiber/fiber/v2"
 	"strings"
 	"time"
 )
@@ -43,4 +44,31 @@ func CrawlLink(url string) []Link {
 	}
 
 	return links
+}
+
+func crawlHandler(c *fiber.Ctx) error {
+	type Request struct {
+		Url string `json:"url"`
+	}
+
+	var request Request
+	if err := c.BodyParser(&request); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"status": 200,
+			"message": "url invalid",
+		})
+	}
+
+	CrawlLink(request.Url)
+
+	return c.Status(200).JSON(fiber.Map{
+		"status": 200,
+		"message": "url crawled successfuly",
+	})
+}
+
+func main() {
+	app := fiber.New()
+
+	app.Post("/api/crawl", crawlHandler)
 }
