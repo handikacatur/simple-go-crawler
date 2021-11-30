@@ -9,3 +9,5 @@ Change `chromedp.WaitVisible('your-element')` to match your requirement. It will
 ### Dependencies
 1. chromedp [see here](https://github.com/chromedp/chromedp)
 2. GoFiber [see here](https://github.com/gofiber/fiber)
+
+### Unit testing screenshot
