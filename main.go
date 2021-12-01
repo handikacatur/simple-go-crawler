@@ -71,4 +71,6 @@ func main() {
 	app := fiber.New()
 
 	app.Post("/api/crawl", crawlHandler)
+
+	app.Listen(":3000")
 }
